@@ -34,7 +34,9 @@ void main() {
       build: () {
         when(mockAlbumRepository.getAlbums()).thenAnswer(
           (_) async => [
-            Album(id: 1, title: 'Album 1'),
+            Album()
+              ..id = 1
+              ..title = 'Album 1',
           ],
         );
         return bloc;

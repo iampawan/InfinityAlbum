@@ -11,7 +11,7 @@ void main() {
 
       final album = Album.fromJson(json);
 
-      expect(album.id, 1);
+      expect(album.albumId, 1);
       expect(album.title, 'Test album');
     });
   });

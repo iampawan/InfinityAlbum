@@ -14,7 +14,7 @@ void main() {
 
       final photo = Photo.fromJson(json);
 
-      expect(photo.id, 1);
+      expect(photo.photoId, 1);
       expect(photo.albumId, 1);
       expect(photo.title, 'Test photo');
       expect(photo.url, 'https://google.com/photo.jpg');
