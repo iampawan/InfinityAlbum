@@ -21,8 +21,8 @@ class _PhotoListState extends State<PhotoList> {
   void initState() {
     super.initState();
     _pageController = PageController(
-      initialPage: 101,
-      viewportFraction: 0.32,
+      initialPage: 10001,
+      viewportFraction: 0.32, // Show 3 images
     );
 
     context.read<AlbumBloc>().add(LoadPhotosForAlbum(widget.albumId));
