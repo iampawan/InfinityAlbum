@@ -22,9 +22,8 @@ Infinity Albums provides a seamless experience for organizing your photos into a
 
 Download the latest version of Infinity Albums from the link below:
 
-[Download Infinity Albums APK](https://drive.google.com/file/d/1lR4Q09nkPfXQAJQkSVTgMecrE3Jp3tkv/view?usp=sharing)
+[Download Infinity Albums APK](https://drive.google.com/file/d/168zR0PT3DHEY8aqwApCSCfka6Y2fR7if/view?usp=sharing)
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
