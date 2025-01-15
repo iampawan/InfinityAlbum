@@ -15,22 +15,18 @@ class PhotoList extends StatefulWidget {
 }
 
 class _PhotoListState extends State<PhotoList> {
-  late PageController _pageController;
+  late ScrollController _scrollController;
 
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(
-      initialPage: 10001,
-      viewportFraction: 0.32, // Show 3 images
-    );
-
+    _scrollController = ScrollController();
     context.read<AlbumBloc>().add(LoadPhotosForAlbum(widget.albumId));
   }
 
   @override
   void dispose() {
-    _pageController.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -43,8 +39,12 @@ class _PhotoListState extends State<PhotoList> {
 
           final photos = album.photos.toList();
 
-          return PageView.builder(
-            controller: _pageController,
+          return ListView.builder(
+            controller: _scrollController,
+            scrollDirection: Axis.horizontal,
+            physics: const ClampingScrollPhysics(),
+            cacheExtent: 100,
+            itemExtent: 150,
             itemBuilder: (context, index) {
               if (photos.isEmpty) {
                 return const Center(
@@ -52,7 +52,10 @@ class _PhotoListState extends State<PhotoList> {
                 );
               }
               final photo = photos[index % photos.length];
-              return PhotoCard(photo: photo);
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: PhotoCard(photo: photo),
+              );
             },
           );
         }

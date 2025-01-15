@@ -25,7 +25,7 @@ class PhotoCard extends StatelessWidget {
                   ),
               errorWidget: (context, url, error) => Center(
                     child: Center(
-                      child: Text(photo.id.toString()),
+                      child: Text(photo.photoId.toString()),
                     ),
                   )),
         ),

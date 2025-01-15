@@ -14,6 +14,7 @@ class AlbumList extends StatefulWidget {
 class _AlbumListState extends State<AlbumList> {
   late ScrollController _scrollController;
   late List<Album> _infiniteAlbums;
+  bool _isLoading = false;
 
   @override
   void initState() {
@@ -24,20 +25,19 @@ class _AlbumListState extends State<AlbumList> {
   }
 
   void _onScroll() {
+    if (_isLoading) return;
+
     final maxScroll = _scrollController.position.maxScrollExtent;
     final currentScroll = _scrollController.position.pixels;
+    const threshold = 200.0;
 
-    if (currentScroll >= maxScroll - 200) {
+    // Scrolling down
+    if (currentScroll >= maxScroll - threshold) {
+      _isLoading = true;
       setState(() {
         _infiniteAlbums.addAll(widget.albums);
       });
-    }
-
-    if (currentScroll <= 200) {
-      setState(() {
-        _infiniteAlbums.insertAll(0, widget.albums);
-        _scrollController.jumpTo(_scrollController.position.pixels + 100);
-      });
+      _isLoading = false;
     }
   }
 
@@ -52,9 +52,15 @@ class _AlbumListState extends State<AlbumList> {
     return ListView.builder(
       controller: _scrollController,
       itemCount: _infiniteAlbums.length,
+      cacheExtent: 500,
       itemBuilder: (context, index) {
         final album = _infiniteAlbums[index];
-        return AlbumItem(album: album);
+        return RepaintBoundary(
+          child: AlbumItem(
+            key: ValueKey('album_${album.albumId}_$index'),
+            album: album,
+          ),
+        );
       },
     );
   }
