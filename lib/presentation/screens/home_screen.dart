@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinity_albums/blocs/album/album_bloc.dart';
 import 'package:infinity_albums/blocs/album/album_state.dart';
+import 'package:infinity_albums/presentation/widgets/album_list.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -16,7 +17,7 @@ class HomeScreen extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           }
           if (state is AlbumLoaded) {
-            return Center(child: Text(state.albums.length.toString()));
+            return AlbumList(albums: state.albums);
           }
           if (state is AlbumError) {
             return Center(child: Text(state.message));
