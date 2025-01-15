@@ -1,16 +1,29 @@
-# infinity_albums
+# Infinity Albums
 
-A new Flutter project.
+Infinity Albums is a photo album application that allows users browse photos.
 
-## Getting Started
+## Description
 
-This project is a starting point for a Flutter application.
+Infinity Albums provides a seamless experience for organizing your photos into albums.
 
-A few resources to get you started if this is your first Flutter project:
+## Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Uses Clean Architecture
+- Supports data caching
+- Supports local data storage
+- Uses Bloc State Management
+- Comes with Unit and Widget tests
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Screenshot
+
+<img src="ss.png" alt="Infinity Albums Screenshot" width="200"/>
+
+## Download
+
+Download the latest version of Infinity Albums from the link below:
+
+[Download Infinity Albums APK](https://drive.google.com/file/d/1lR4Q09nkPfXQAJQkSVTgMecrE3Jp3tkv/view?usp=sharing)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
