@@ -18,7 +18,7 @@ class PhotoCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(8.0),
           ),
           child: CachedNetworkImage(
-              imageUrl: photo.url,
+              imageUrl: "https://picsum.photos/300/200?random=${photo.id}",
               fit: BoxFit.cover,
               placeholder: (context, url) => const Center(
                     child: CircularProgressIndicator(),
