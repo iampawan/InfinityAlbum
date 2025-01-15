@@ -9,10 +9,10 @@ abstract class AlbumEvent extends Equatable {
 
 class LoadAlbums extends AlbumEvent {}
 
-class LoadPhotos extends AlbumEvent {
+class LoadPhotosForAlbum extends AlbumEvent {
   final int albumId;
 
-  const LoadPhotos(this.albumId);
+  const LoadPhotosForAlbum(this.albumId);
 
   @override
   List<Object?> get props => [albumId];

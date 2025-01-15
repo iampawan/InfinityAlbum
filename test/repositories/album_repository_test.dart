@@ -56,7 +56,7 @@ void main() {
             ),
           ));
 
-      final photos = await albumRepository.getPhotos(albumId);
+      final photos = await albumRepository.getPhotosForAlbum(albumId);
       expect(photos.length, 1);
       expect(photos.first.title, 'Photo 1');
     });

@@ -24,7 +24,7 @@ class AlbumRepository {
   }
 
   // Get All Photos for a specific album
-  Future<List<Photo>> getPhotos(int albumId) async {
+  Future<List<Photo>> getPhotosForAlbum(int albumId) async {
     try {
       final response = await _dio.get('$baseUrl/photos', queryParameters: {
         'albumId': albumId,
