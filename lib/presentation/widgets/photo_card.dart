@@ -19,6 +19,13 @@ class PhotoCard extends StatelessWidget {
           child: Image.network(
             photo.url,
             fit: BoxFit.cover,
+            loadingBuilder: (context, child, loadingProgress) {
+              if (loadingProgress == null) return child;
+              return const Center(child: CircularProgressIndicator());
+            },
+            errorBuilder: (context, error, stackTrace) {
+              return Center(child: Text(photo.id.toString()));
+            },
           ),
         ),
       ),
