@@ -22,8 +22,8 @@ class _AlbumItemState extends State<AlbumItem> {
           child: Text(
             widget.album.title,
             style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
+              fontSize: 20,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ),
@@ -31,7 +31,12 @@ class _AlbumItemState extends State<AlbumItem> {
           height: 150,
           child: PhotoList(albumId: widget.album.id),
         ),
-        const Divider(),
+        const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Divider(
+            color: Colors.black,
+          ),
+        ),
       ],
     );
   }

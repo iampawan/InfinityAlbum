@@ -23,9 +23,9 @@ class PhotoCard extends StatelessWidget {
               placeholder: (context, url) => const Center(
                     child: CircularProgressIndicator(),
                   ),
-              errorWidget: (context, url, error) => Center(
+              errorWidget: (context, url, error) => const Center(
                     child: Center(
-                      child: Text(photo.photoId.toString()),
+                      child: Icon(Icons.photo, size: 100, color: Colors.grey),
                     ),
                   )),
         ),
