@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:infinity_albums/data/models/photo.dart';
 
@@ -16,17 +17,17 @@ class PhotoCard extends StatelessWidget {
             border: Border.all(color: Colors.grey[300]!),
             borderRadius: BorderRadius.circular(8.0),
           ),
-          child: Image.network(
-            photo.url,
-            fit: BoxFit.cover,
-            loadingBuilder: (context, child, loadingProgress) {
-              if (loadingProgress == null) return child;
-              return const Center(child: CircularProgressIndicator());
-            },
-            errorBuilder: (context, error, stackTrace) {
-              return Center(child: Text(photo.id.toString()));
-            },
-          ),
+          child: CachedNetworkImage(
+              imageUrl: photo.url,
+              fit: BoxFit.cover,
+              placeholder: (context, url) => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+              errorWidget: (context, url, error) => Center(
+                    child: Center(
+                      child: Text(photo.id.toString()),
+                    ),
+                  )),
         ),
       ),
     );
