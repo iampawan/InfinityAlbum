@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:infinity_albums/data/models/album.dart';
+import 'package:infinity_albums/presentation/widgets/photo_list.dart';
 
 class AlbumItem extends StatelessWidget {
   const AlbumItem({super.key, required this.album});
@@ -20,6 +21,10 @@ class AlbumItem extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
+        ),
+        SizedBox(
+          height: 150,
+          child: PhotoList(albumId: album.id),
         ),
         const Divider(),
       ],
