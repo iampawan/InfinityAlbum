@@ -27,3 +27,4 @@ Download the latest version of Infinity Albums from the link below:
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
