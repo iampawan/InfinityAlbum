@@ -28,9 +28,22 @@ class _AlbumListState extends State<AlbumList> {
     if (_isLoading) return;
 
     final maxScroll = _scrollController.position.maxScrollExtent;
+    final minScroll = _scrollController.position.minScrollExtent;
     final currentScroll = _scrollController.position.pixels;
     const threshold = 200.0;
+    if (currentScroll <= minScroll + 1) {
+      _isLoading = true;
 
+      if (currentScroll <= minScroll + 1) {
+        _scrollController.animateTo(
+          maxScroll + (threshold * 6),
+          duration: const Duration(milliseconds: 50),
+          curve: Curves.easeOut,
+        );
+      }
+
+      _isLoading = false;
+    }
     // Scrolling down
     if (currentScroll >= maxScroll - threshold) {
       _isLoading = true;
@@ -43,6 +56,7 @@ class _AlbumListState extends State<AlbumList> {
 
   @override
   void dispose() {
+    _scrollController.removeListener(_onScroll);
     _scrollController.dispose();
     super.dispose();
   }
