@@ -1,24 +1,25 @@
 import 'package:infinity_albums/data/models/photo.dart';
+import 'package:isar/isar.dart';
 
+part 'album.g.dart';
+
+@Collection()
 class Album {
-  final int id;
-  final String title;
+  Id id = Isar.autoIncrement;
 
-  Album({required this.id, required this.title});
+  @Index(unique: true)
+  late int albumId;
+  late String title;
 
-  List<Photo> get photos => [
-        Photo(id: 1, albumId: id, title: 'Photo 1', url: '', thumbnailUrl: ''),
-        Photo(id: 2, albumId: id, title: 'Photo 2', url: '', thumbnailUrl: ''),
-        Photo(id: 3, albumId: id, title: 'Photo 3', url: '', thumbnailUrl: ''),
-        Photo(id: 4, albumId: id, title: 'Photo 4', url: '', thumbnailUrl: ''),
-        Photo(id: 5, albumId: id, title: 'Photo 5', url: '', thumbnailUrl: ''),
-        Photo(id: 6, albumId: id, title: 'Photo 6', url: '', thumbnailUrl: ''),
-      ];
+  @Backlink(to: 'album')
+  final photos = IsarLinks<Photo>();
+
+  // Empty constructor for Isar
+  Album();
 
   factory Album.fromJson(Map<String, dynamic> json) {
-    return Album(
-      id: json['id'],
-      title: json['title'],
-    );
+    return Album()
+      ..albumId = json['id']
+      ..title = json['title'];
   }
 }

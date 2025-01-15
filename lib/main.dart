@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinity_albums/blocs/album/album_bloc.dart';
 import 'package:infinity_albums/blocs/album/album_event.dart';
 import 'package:infinity_albums/data/respositories/album_repository.dart';
+import 'package:infinity_albums/data/services/isar_service.dart';
 import 'package:infinity_albums/presentation/screens/home_screen.dart';
 
 void main() {
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       ),
       home: BlocProvider(
         create: (context) => AlbumBloc(
-          AlbumRepository(),
+          AlbumRepository(isarService: IsarService()),
         )..add(LoadAlbums()),
         child: const HomeScreen(),
       ),
