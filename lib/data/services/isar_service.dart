@@ -72,4 +72,13 @@ class IsarService {
     final photos = await getPhotosByAlbumId(albumId);
     return photos.isNotEmpty;
   }
+
+  // Clear all data
+  Future<void> clear() async {
+    final isar = await db;
+    await isar.writeTxn(() async {
+      await isar.albums.clear();
+      await isar.photos.clear();
+    });
+  }
 }
